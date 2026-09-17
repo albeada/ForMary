@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const START_DATE = new Date(2024, 8, 21, 11, 50, 0) // 21 Sept 2024 11:50 (month index 8)
+const START_DATE = new Date(2024, 8, 21, 23, 50, 0) // 21 Sept 2024 23:50 (month index 8)
 
 function computeElapsed(start, now) {
   // Use borrowing method so that each unit is non-negative and days < ~31
@@ -65,7 +65,7 @@ export default function Hero({ className = '' }) {
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-pink-700">Tempo trascorso</h2>
-            <p className="mt-1 text-sm text-pink-600">Da <strong>21 Settembre 2024 — 11:50</strong></p>
+            <p className="mt-1 text-sm text-pink-600">Da <strong>21 Settembre 2024 — 23:50</strong></p>
           </div>
           <div className="hidden sm:flex items-center justify-center w-24 h-24 bg-pink-200 rounded-xl shadow-inner">
             <div className="w-16 h-16 bg-pink-400 rounded-full flex items-center justify-center text-white text-2xl font-semibold">💕</div>
@@ -80,7 +80,10 @@ export default function Hero({ className = '' }) {
             </div>
           ))}
         </div>
-
+        <div>
+          <h1 className="mt-6 text-sm text-pink-600">Love Note</h1>     
+          <p className="mt-6 text-sm text-pink-600">Ogni giorno è un dono prezioso. Ricorda di apprezzare ogni momento insieme.</p>
+        </div>
         
       </div>
     </div>

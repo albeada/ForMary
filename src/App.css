@@ -195,3 +195,31 @@
   .card-container { height: 76vh; }
 }
 
+/* Theme overrides to make entire screen pink or black */
+.theme-hero {
+  background: linear-gradient(180deg,#fff0f8 0%, #ffeef8 100%) !important;
+  color: #6b0b3a;
+}
+.theme-hero .card-wrapper.card-visible {
+  /* ensure visible card blends with hero theme */
+  background: transparent;
+}
+.theme-hero .controls { color: #6b0b3a }
+.theme-hero .nav-button { background: #ffd7ed; color: #7a0a42 }
+.theme-hero .card-wrapper .rounded-3xl, .theme-hero .card-wrapper .rounded-2xl {
+  background: transparent !important;
+}
+
+.theme-diary {
+  background: #000 !important;
+  color: #fff;
+}
+.theme-diary .controls { color: #fff }
+.theme-diary .nav-button { background: #111; color: #fff }
+.theme-diary .card-wrapper .rounded-3xl, .theme-diary .card-wrapper .rounded-2xl {
+  background: transparent !important;
+}
+
+
+
+
