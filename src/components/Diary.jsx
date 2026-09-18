@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchPhrases, insertPhrase } from '../lib/supabaseClient'
+import './Diary.css'
 
 export default function Diary({ className = '' }) {
   const [text, setText] = useState('')
@@ -39,36 +40,36 @@ export default function Diary({ className = '' }) {
   }
 
   return (
-    <div className={`flex flex-col justify-between ${className}`}>
-      <div className="h-full rounded-3xl bg-gradient-to-br from-black/90 via-gray-900 to-black p-6 shadow-2xl border border-white/10">
-        <div className="bg-black/95 p-4 rounded-md">
-          <div className="flex items-center justify-between">
+    <div className={`diary ${className}`}>
+      <div className="diary-panel">
+        <div className="diary-content">
+          <div className="diary-header">
             <div>
-              <h2 className="text-3xl font-serif text-white tracking-wider">DEATH NOTE</h2>
-              <p className="text-xs text-gray-300">Taccuino personale</p>
+              <h2 className="diary-heading">DEATH NOTE</h2>
+              <p className="diary-subtitle">Taccuino personale</p>
             </div>
           </div>
 
-          <form onSubmit={handleSave} className="mt-4">
+          <form onSubmit={handleSave} className="diary-form">
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={6}
-              className="w-full bg-black text-white border border-gray-800 p-3 rounded-md font-serif resize-y"
+              className="diary-textarea"
               placeholder="Scrivi la frase..."
             />
-            <div className="mt-3 flex gap-2 justify-end">
-              <button type="submit" className="px-4 py-2 bg-red-900 text-white rounded" disabled={saving}>{saving ? 'Salvando...' : 'Incidi'}</button>
+            <div className="diary-actions">
+              <button type="submit" className="diary-submit" disabled={saving}>{saving ? 'Salvando...' : 'Incidi'}</button>
             </div>
           </form>
 
-          <div className="mt-6 space-y-3 max-h-64 overflow-auto text-white/90">
-            {loading && <div className="text-sm text-gray-400">Caricamento...</div>}
-            {!loading && items.length === 0 && <div className="text-sm text-gray-500">Nessuna frase ancora.</div>}
+          <div className="diary-items">
+            {loading && <div className="diary-loading">Caricamento...</div>}
+            {!loading && items.length === 0 && <div className="diary-empty">Nessuna frase ancora.</div>}
             {items.map((it) => (
-              <div key={it.id} className="p-3 border-b border-white/10">
-                <div className="text-sm font-serif">{it.text}</div>
-                <div className="text-xs text-gray-400 mt-1">{it.inserted_at ? new Date(it.inserted_at).toLocaleString() : ''}</div>
+              <div key={it.id} className="diary-item">
+                <div className="diary-item-text">{it.text}</div>
+                <div className="diary-item-date">{it.inserted_at ? new Date(it.inserted_at).toLocaleString() : ''}</div>
               </div>
             ))}
           </div>

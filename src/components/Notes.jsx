@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchPhrases, insertPhrase } from '../lib/supabaseClient'
+import './Notes.css'
 
 export default function Notes() {
   const [text, setText] = useState('')
@@ -47,23 +48,23 @@ export default function Notes() {
   }
 
   return (
-    <section className="max-w-3xl mx-auto p-6">
-      <form onSubmit={handleAdd} className="flex flex-col gap-3">
-        <label className="text-sm text-gray-600">Aggiungi una frase</label>
+    <section className="notes">
+      <form onSubmit={handleAdd} className="notes-form">
+        <label className="notes-label">Aggiungi una frase</label>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={3}
-          className="p-3 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
+          className="notes-textarea"
           placeholder="Scrivi qualcosa di carino..."
         />
-        <div className="flex gap-2">
-          <button className="px-4 py-2 bg-pink-600 text-white rounded-md shadow-sm" type="submit">
+        <div className="notes-actions">
+          <button className="notes-save" type="submit">
             Salva
           </button>
           <button
             type="button"
-            className="px-4 py-2 bg-white border rounded-md"
+            className="notes-clear"
             onClick={() => setItems([])}
           >
             Cancella tutto
@@ -71,12 +72,12 @@ export default function Notes() {
         </div>
       </form>
 
-      <div className="mt-6 space-y-3">
-        {items.length === 0 && <p className="text-sm text-gray-500">Nessuna frase ancora.</p>}
+      <div className="notes-items">
+        {items.length === 0 && <p className="notes-empty">Nessuna frase ancora.</p>}
         {items.map((it) => (
-          <div key={it.id} className="p-3 rounded-lg bg-white/80 border shadow-sm">
-            <div className="text-sm text-gray-700">{it.text}</div>
-            <div className="text-xs text-gray-400 mt-1">{new Date(it.created_at).toLocaleString()}</div>
+          <div key={it.id} className="note-item">
+            <div className="note-text">{it.text}</div>
+            <div className="note-date">{new Date(it.created_at).toLocaleString()}</div>
           </div>
         ))}
       </div>
