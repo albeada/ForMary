@@ -1,5 +1,7 @@
 .app-root {
+  width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -143,7 +145,17 @@
 }
 
 @media (max-width: 768px) {
+  .app-content {
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .content-width {
+    width: 96%;
+    max-width: none;
+  }
+
   .card-container {
-    height: min(76vh, calc(100svh - 2rem));
+    height: 105svh;
   }
 }

@@ -105,7 +105,7 @@
 }
 
 .love-note {
-  max-height: 400px;
+  max-height: min(400px, 50vh);
   overflow-y: auto;
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
@@ -118,12 +118,37 @@
 }
 
 .love-note-text {
-  margin-top: 1rem;
+  margin: 1rem 0 0;
   color: #831843;
   font-family: Georgia, Cambria, 'Times New Roman', serif;
   font-size: 1rem;
   line-height: 1.7;
   overflow-wrap: break-word;
+}
+
+.love-note-intro {
+  margin-top: 0;
+}
+
+.love-note-quote {
+  margin: 1.25rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--pink-400);
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: rgba(249, 205, 228, 0.35);
+  color: var(--pink-700);
+  font-family: Georgia, Cambria, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.love-note-signature {
+  margin: 1.25rem 0 0;
+  color: var(--pink-700);
+  font-family: Georgia, Cambria, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.75;
 }
 
 .love-note::-webkit-scrollbar {
@@ -159,5 +184,35 @@
 
   .elapsed-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-panel {
+    padding: 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .love-note {
+    max-height: 70svh;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    border-radius: 1.1rem;
+  }
+
+  .love-note-title {
+    font-size: 1.2rem;
+    line-height: 1.45;
+  }
+
+  .love-note-text {
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .love-note-quote,
+  .love-note-signature {
+    font-size: 1.02rem;
+    line-height: 1.7;
   }
 }
